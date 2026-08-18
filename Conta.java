@@ -3,7 +3,7 @@ package POO;
 class Conta{
   //atributos
   private int numero;
-  private String titular;
+  private Cliente titular;
   private double saldo;
   private double limite = 2000;
   
@@ -11,7 +11,7 @@ class Conta{
   void setNumero(int numero){
     this.numero = numero; //atributo recebe o valor do parâmetro
   }
-  void setTitular(String titular){
+  void setTitular(Cliente titular){
     this.titular = titular;
   }
   
@@ -39,10 +39,11 @@ class Conta{
       System.out.println("Valor inválido");
     }
   }
-  void saca(double valor){
+  boolean saca(double valor){
     if(isPositive(valor)){
       if(saldo+limite >= valor){
         saldo -= valor;
+        return true;
       } else {
         System.out.println("Saldo R$ "+saldo+
         " é insuficiente para o saque de R$ "+valor);
@@ -50,11 +51,21 @@ class Conta{
     } else {
       System.out.println("Valor inválido");
     }
+    return false;
   }
+
+  void transfere(Conta destino, double valor){
+    if(this.saca(valor)){ //saca da origem
+      destino.deposita(valor);//deposita no destino
+    }
+  }
+
+
   void mostra(){
     System.out.println("------ Conta --------");
     System.out.println("Número.: " + this.numero);
-		System.out.println("Titular: " + this.titular);
+		System.out.println("Titular: ");
+    this.titular.mostra();
 		System.out.println("Limite.: " + this.limite);
 		System.out.println("Saldo..: " + this.saldo);
   }
