@@ -1,4 +1,7 @@
 package POO;
+
+import java.util.Scanner;
+
 public class Programa{
 	public static void main(String[] args) {
 		
@@ -7,8 +10,17 @@ public class Programa{
 
 		System.out.println("Contas criadas: "+Conta.getContador());
 		
+		// leitura de dados do usuário
+		Scanner s = new Scanner(System.in);
+		String nome, cpf;
+		System.out.print("Informe seu nome: ");
+		nome = s.nextLine();
+		System.out.print("Informe seu cpf: ");
+		cpf = s.nextLine();
+		s.close();
+
 		// instanciando um objeto
-		Cliente cli1 = new Cliente("Maria","123");
+		Cliente cli1 = new Cliente(nome,cpf);
 		Cliente cli2 = new Cliente("Pedro","456");
 		cli1.mostra();
 		cli2.mostra();
