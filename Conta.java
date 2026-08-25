@@ -1,16 +1,26 @@
 package POO;
 
 class Conta{
-  //atributos
+  //atributos de objeto
   private int numero;
-  private Cliente titular;
+  private Cliente titular = new Cliente(null, null);
   private double saldo;
   private double limite = 2000;
+
+  //atributo de classe
+  private static int contador = 0;
   
-  //métodos
-  void setNumero(int numero){
-    this.numero = numero; //atributo recebe o valor do parâmetro
+  
+  Conta(){
+    this.numero = ++Conta.contador;
   }
+  
+  // método de Classe - get para ler o valor do contador
+  public static int getContador(){
+    return Conta.contador;
+  }
+
+
   void setTitular(Cliente titular){
     this.titular = titular;
   }
