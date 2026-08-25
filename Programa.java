@@ -4,9 +4,12 @@ public class Programa{
 		
 		// instanciando um objeto
 		
-		Cliente cli1 = new Cliente();
-		cli1.setCpf("1234");
-		cli1.setNome("Zé");
+		Cliente cli1 = new Cliente("Maria","123");
+		Cliente cli2 = new Cliente("Pedro","456");
+		cli1.mostra();
+		cli2.mostra();
+		
+	
 		
 		Conta c1 = new Conta();
 		c1.setNumero(7);
@@ -19,7 +22,7 @@ public class Programa{
 		
 		Conta c2 = new Conta();
 		c2.setNumero(13);
-		c2.setTitular(cli1);
+		c2.setTitular(cli2);
 		c2.mostra();
 		System.out.println(c2.getLimite());
 
